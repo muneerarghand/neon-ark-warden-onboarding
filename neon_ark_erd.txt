@@ -51,3 +51,12 @@ Ref: wardens.role_id > roles.role_id
 Ref: wardens.employment_status_id > employment_statuses.employment_status_id
 Ref: wardens.clearance_level_id > clearance_levels.clearance_level_id
 Ref: certifications.warden_id > wardens.warden_id
+
+Table certifications {
+  certification_id serial [pk]
+  warden_id int [ref: > wardens.warden_id]
+  certification_name varchar(100) [not null]
+  date_earned date [not null]
+  expiration_date date
+  is_expired boolean [default: false]
+}
